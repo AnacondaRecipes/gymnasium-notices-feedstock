@@ -9,31 +9,37 @@ source:
   sha256: 3e8c868046f56dea84c949cc7e97383cccfab27152fc3f4968754e4c9c087ab9
 
 build:
-  noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
   number: 0
+  skip: True  # [py<36]
+  script: {{ PYTHON }} -m pip install . -vv --no-deps
 
 requirements:
   host:
     - pip
     - python
-    - setuptools >=42
+    - setuptools
+    - wheel
   run:
-    - python >=3.6
+    - python
 
 test:
   imports:
     - gymnasium_notices
-  commands:
-    - pip check
   requires:
     - pip
+  commands:
+    - pip check
 
 about:
   home: https://github.com/Farama-Foundation/gym-notices
   summary: Notices for gymnasium
   license: MIT
+  license_family: MIT
   license_file: LICENSE.txt
+  description: |
+    Notices for gymnasium
+  dev_url: https://github.com/Farama-Foundation/gym-notices
+  doc_url: https://github.com/Farama-Foundation/gym-notices
 
 extra:
   recipe-maintainers:
