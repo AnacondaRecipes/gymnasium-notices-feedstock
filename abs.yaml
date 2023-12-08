@@ -1,0 +1,2 @@
+# Not on aggregate because it is deprecated
+aggregate_check: false
